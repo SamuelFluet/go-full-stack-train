@@ -1,4 +1,5 @@
 const express = require('express');
+var bcrypt = require('bcryptjs')
 
 const app = express();
 const mongoose = require('mongoose');
