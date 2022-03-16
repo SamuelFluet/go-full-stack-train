@@ -1,10 +1,10 @@
 const express = require('express');
 var bcrypt = require('bcrypt')
-
 const app = express();
 const mongoose = require('mongoose');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
+const path = require('path');
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -20,7 +20,7 @@ useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
 .catch(() => console.log('Connexion à MongoDB échouée !'));
  
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.json());
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/auth', userRoutes);
